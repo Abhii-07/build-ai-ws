@@ -7,7 +7,11 @@ import { basePrompt as nodeBasePrompt } from "./defaults/node";
 import { basePrompt as reactBasePrompt } from "./defaults/react";
 import cors from "cors";
 
-const anthropic = new Anthropic();
+const PORT = process.env.PORT || 3001;
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+});
+
 const app = express();
 app.use(cors());
 app.use(express.json());
